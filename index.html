@@ -31,9 +31,10 @@
 
     <div class="cursor"></div>
     <nav class="sidebar-nav">
-    <a href="#home" data-label="Home"></a>
+    <a href="#home" class="active" data-label="Home"></a>
     <a href="#about" data-label="About"></a>
-    <a href="#services" data-label="Services"></a>
+    <a href="#services" data-label="services"></a>
+    <a href="project.html" data-label="projects"></a>    
     <a href="#contact" data-label="Contact"></a>
 </nav>
 
@@ -133,20 +134,38 @@
         </div>
     </section>
 
-    <section id="lumo-project" class="section">
-    <div class="background-gradient"></div>
-    <div class="lumo-content" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-        <h2 class="title">Introducing Lumo - Changing the Way Students Learn</h2>
-        <p class="section-description">
-            Lumo is a revolutionary e-learning platform designed to enhance the way students interact with digital education. With an intuitive interface, interactive features, and customizable learning paths, Lumo provides an engaging and personalized learning experience for all users.
+     
+
+    
+   <section id="projects" class="projects">
+       <div class="background-gradient"></div>
+    <div class="background-grid"></div>
+    <div class="projects-content" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out-quint">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+            Explore our innovative solutions designed to empower organizations through cutting-edge technology.
         </p>
+        <div class="project-cards">
+            <div class="project-card" data-aos="zoom-in" data-aos-duration="1500">
+                <h3 class="project-title">Saas Founders</h3>
+                <p class="project-description">Student-led initiative for saas development to empower students with practical skills, knowledge and resources neede to build successsful saas companies.</p>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">
+                <h3 class="project-title">Lumo</h3>
+                <p class="project-description">Revolutionizing e-learning with an engaging platform that enhances student interaction and personalized learning experiences.</p>
+            
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">
+                <h3 class="project-title">One-click</h3>
+                <p class="project-description">ASCII Payment system, designed to make conventional payment systems simple, reliable and modern.</p>
+            </div>
+        </div>
         <div class="cta-container">
-            <a href="https://easy-learning-two.vercel.app/" class="cta-button" target="_blank" rel="noopener noreferrer">
-                Explore Lumo
-            </a>
+            <a href="project.html" class="cta-button">Explore All</a>
         </div>
     </div>
 </section>
+    
 
     <section id="why-us" class="section">
     <div class="why-us-content">
@@ -231,6 +250,32 @@
         once: true, 
         mirror: false, 
     });
+
+
+           document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".sidebar-nav a");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach((link) => {
+                        link.classList.remove("active");
+                        if (link.getAttribute("href") === `#${entry.target.id}`) {
+                            link.classList.add("active");
+                        }
+                    });
+                }
+            });
+        },
+        { threshold: 10 } // Adjust as needed
+    );
+
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
+});
 </script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
 
